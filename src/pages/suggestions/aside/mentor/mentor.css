@@ -1,0 +1,48 @@
+.mentor {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 255px;
+    height: 137px;
+    background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+    border-radius: 10px;
+    transition: all .3s ease-in;
+}
+
+.mentor:hover {
+    /* transform: scale(1.1); */
+    scale: 1.05;
+}
+
+.mentor__container {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.mentor__title {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: -0.25px;
+
+    color: #FFFFFF;
+}
+
+.mentor__desc {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+
+    mix-blend-mode: normal;
+    opacity: 0.75;
+}

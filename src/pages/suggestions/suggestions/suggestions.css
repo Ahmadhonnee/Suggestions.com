@@ -1,0 +1,8 @@
+.suggestions {
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    gap: 30px;
+    margin: 60px;
+    background-color: inherit;
+    width: 100%;
+}

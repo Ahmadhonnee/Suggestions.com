@@ -1,0 +1,43 @@
+.comment {
+    display: flex;
+    gap: 17px;
+    margin: 18px;
+}
+
+.comment__user {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment__img {
+    align-self: flex-start;
+    min-width: 40px;
+    min-height: 40px;
+    background: url(../../assets/img/Moss.png) no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.comment__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.replied-comment {
+    position: relative;
+}
+
+.replied-comment::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 200px;
+    width: 2px;
+    background: #647196;
+    mix-blend-mode: normal;
+    opacity: 0.1;
+}

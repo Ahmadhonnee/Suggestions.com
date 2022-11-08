@@ -1,0 +1,90 @@
+.roadmap {
+    display: flex;
+    flex-direction: column;
+    width: 255px;
+    height: 166px;
+    padding: 24px;
+
+    background: #FFFFFF;
+    border-radius: 10px;
+    transition: all .3s ease-in;
+}
+
+.roadmap:hover {
+    scale: 1.04;
+}
+
+.roadmap__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roadmap__title {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.25px;
+    color: #3A4374;
+}
+
+.roadmap__view {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    text-decoration-line: underline;
+    color: #4661E6;
+}
+
+.roadmap__view:hover {
+    color: #8397F8;
+}
+
+.roadmap__statistics {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+.roadmap__statistics__row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.roadmap__statistics__group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.roadmap__statistics__circle {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #F49F85;
+}
+
+.roadmap__statistics__status {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #647196;
+}
+
+.roadmap__statistics__amount {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: right;
+    color: #647196;
+}

@@ -1,0 +1,29 @@
+.lightBtn {
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    color: #4661E6;
+    background: #F2F4FF;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+.lightBtn:hover {
+    background: #CFD7FF;
+}
+
+/* Here click effect */
+/* .lightBtn {
+    background: #4661E6;
+    color: #ffffff;
+} */

@@ -1,0 +1,11 @@
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.article__feedbacks {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

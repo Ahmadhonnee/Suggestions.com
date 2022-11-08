@@ -1,0 +1,53 @@
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin: 60px 0;
+}
+
+.edit-form-bar {
+    display: flex;
+}
+
+.edit-form-body {
+    position: relative;
+    padding: 52px 42px 40px 42px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 10px;
+    gap: 24px;
+}
+
+.edit-form-body::after {
+    content: "";
+    background-size: contain;
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    top: -4%;
+    left: 42px;
+    background-image: url(../../assets/img/round-edit.svg);
+    background-position: center center;
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.edit-form-details {
+    display: flex;
+    gap: 24px;
+}
+
+.edit-form-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    /* aspect-ratio: 1/1; */
+}
+
+.edit-form-btns {
+    display: flex;
+    gap: 16px;
+    align-self: flex-end;
+}

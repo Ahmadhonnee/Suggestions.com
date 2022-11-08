@@ -1,0 +1,54 @@
+.feedbackbar {
+    display: flex;
+    align-items: center;
+    background: #373F68;
+    border-radius: 10px;
+    padding: 24px;
+    gap: 38px;
+}
+
+.feedbackbar__right {
+    margin-left: auto;
+}
+
+.feedbackbar__sort {
+    display: flex;
+    align-items: baseline;
+}
+
+.feedbackbar__sort__sortby {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #F2F4FE;
+}
+
+.feedbackbar__sort__sortby:hover {
+    opacity: 0.75;
+}
+
+.feedbackbar__sort__selected {
+    font-weight: 700;
+}
+
+.feedbackbar__sort__svg {
+    margin-left: 6px;
+}
+
+.feedbackbar__suggestions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.feedbackbar__suggestions__amount {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.25px;
+    color: #FFFFFF;
+}

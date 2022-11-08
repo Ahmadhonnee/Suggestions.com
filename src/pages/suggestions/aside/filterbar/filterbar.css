@@ -1,0 +1,16 @@
+.filterbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 255px;
+    height: 166px;
+    padding: 24px;
+
+    background: #FFFFFF;
+    border-radius: 10px;
+    transition: all .3s ease-in;
+}
+
+.filterbar:hover {
+    scale: 1.05;
+}

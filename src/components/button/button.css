@@ -1,0 +1,87 @@
+.defaultBtn {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    border: none;
+    width: fit-content;
+    background: #4661E6;
+    border-radius: 10px;
+    transition: all .2s ease-in;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #F2F4FE;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.defaultBtn:hover {
+    background: #7C91F9;
+}
+
+.addFeedbackBtn {
+
+    background: #AD1FEA;
+    border-radius: 10px;
+
+}
+
+.addFeedbackBtn:hover {
+    background: #C75AF6;
+}
+
+.goback-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #647196;
+    background: none;
+    border: transparent;
+    transition: all .2s ease-in;
+}
+
+.goback-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    right: 25px;
+    width: 0px;
+    height: 2px;
+    background: transparent;
+    border-radius: 1px;
+    transition: all .2s ease-in;
+}
+
+.goback-btn:hover {
+    background: none;
+}
+
+.goback-btn:hover::after {
+    width: 55px;
+    background: #647196;
+}
+
+.reply-btn {
+    color: #4661E6;
+}
+
+.reply-btn:hover::after {
+    width: 38px;
+    background: #4661E6;
+}
+
+.darkBtn {
+    background: #3A4374;
+}
+
+.darkBtn:hover {
+    background: #656EA3;
+}

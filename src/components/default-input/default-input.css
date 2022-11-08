@@ -1,0 +1,46 @@
+.input-parent {
+    position: relative;
+}
+
+.default-input {
+    height: 80px;
+    width: 100%;
+    padding: 16px;
+    background: #F7F8FD;
+    border-radius: 5px;
+    border: transparent;
+    transition: all .2s ease-in;
+    outline: none;
+}
+
+.default-input:focus {
+    border: 1px solid #4661E6;
+}
+
+.default-input:focus~.default-input-label {
+    top: -100%;
+    opacity: 0;
+
+}
+
+
+.default-input-label {
+    background: #F7F8FD;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 24px;
+    padding: 3px 5px;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: #8C92B3;
+    border: transparent;
+    border-radius: 9px;
+    transition: all .2s ease-in;
+}
