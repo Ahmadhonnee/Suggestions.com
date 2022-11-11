@@ -1,6 +1,6 @@
-import { Container } from "../../components/container/container";
-import { FeedbackComments } from "../../components/feedback-comments/feedback-comments";
-import { FeedbackDetailBar } from "../../components/feedback-detail-bar/feedback-detail-bar";
+import { Container } from "../../components";
+import { FeedbackComments } from "../../components";
+import { FeedbackDetailBar } from "../../components";
 import "./feedback-detail.css";
 
 export const FeedbackDetail = () => {

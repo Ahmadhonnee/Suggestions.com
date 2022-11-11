@@ -1,13 +1,13 @@
 import "./roadmap.css";
-import { roadmap } from "../../../../data/rodamap";
-import { colors } from "../../../../data/colors";
+import { roadmap } from "../../../../data";
+import { colors } from "../../../../data";
 
 export const Roadmap = () => {
   return (
     <div className="roadmap">
       <div className="roadmap__text">
         <h3 className="roadmap__title">Roadmap</h3>
-        <a className="roadmap__view" href="#">
+        <a className="roadmap__view" href="">
           View
         </a>
       </div>

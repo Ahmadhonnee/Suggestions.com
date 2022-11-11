@@ -5,7 +5,7 @@ export const DefaultInput = ({
   text = "",
   type = "",
   height = "",
-  value,
+  putValue,
 }) => {
   if (text) {
     return (
@@ -14,9 +14,10 @@ export const DefaultInput = ({
           style={{ height: height }}
           autoComplete="off"
           className="default-input"
-          type={"text " + type}
+          type={type || "text"}
           id={"def-input-" + name}
-          value={value}
+          defaultValue={putValue}
+          name={name}
         />
         <label className="default-input-label" htmlFor={"def-input-" + name}>
           {text}
@@ -33,6 +34,8 @@ export const DefaultInput = ({
         className="default-input"
         type={"text " + type}
         id={"def-input-" + name}
+        name={name}
+        defaultValue={putValue}
       />
     </div>
   );

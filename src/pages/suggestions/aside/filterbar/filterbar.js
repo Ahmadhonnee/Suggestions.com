@@ -1,4 +1,4 @@
-import { LightButton } from "../../../../components/light-button/light-button";
+import { LightButton } from "../../../../components";
 import "./filterbar.css";
 
 export const Filterbar = () => {

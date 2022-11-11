@@ -1,7 +1,7 @@
 import "./suggestions.css";
-import { Aside } from "../aside/aside/aside";
-import { Article } from "../article/article/article";
-import { Container } from "../../../components/container/container";
+import { Aside } from "../aside";
+import { Article } from "../article";
+import { Container } from "../../../components";
 
 export const Suggestions = () => {
   return (

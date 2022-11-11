@@ -1,7 +1,7 @@
 import "./aside.css";
-import { Mentor } from "../mentor/mentor";
-import { Filterbar } from "../filterbar/filterbar";
-import { Roadmap } from "../roadmap/roadmap";
+import { Mentor } from "../mentor";
+import { Filterbar } from "../filterbar";
+import { Roadmap } from "../roadmap";
 
 export const Aside = () => {
   return (

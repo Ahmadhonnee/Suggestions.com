@@ -1,4 +1,4 @@
-import { Feedback } from "../../pages/suggestions/article/feedbacks/feedback/feedback";
+import { Feedback } from "../feedback";
 import "./opened-feedback-detail.css";
 
 export const OpenedFeedbackDetail = ({

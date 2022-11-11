@@ -1,11 +1,13 @@
 import "./error.scss";
-import { Button } from "../button/button";
-import { SectionTitle } from "../section-title/section-title";
-import { LigthtText } from "../light-text/light-text";
+import { Button } from "../button";
+import { SectionTitle } from "../section-title";
+import { LigthtText } from "../light-text";
+import { FeedbackDetailBar } from "../feedback-detail-bar";
 
 export const Error = () => {
   return (
     <div className="error">
+      <FeedbackDetailBar />
       <div className="error__img"></div>
       <div className="error__texts">
         <SectionTitle className="error__title">

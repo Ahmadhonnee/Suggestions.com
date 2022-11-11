@@ -1,8 +1,10 @@
 import { useRoutes } from "react-router-dom";
-import { AddSuggestion } from "../pages/add-suggestion/add-suggestion";
-import { EditSuggestion } from "../pages/edit-suggestion/edit-suggestion";
-import { FeedbackDetail } from "../pages/feedback-detail/feedback-detail";
-import { Suggestions } from "../pages/suggestions/suggestions/suggestions";
+import { Error } from "../components";
+import { AddSuggestion } from "../pages/add-suggestion";
+import { EditSuggestion } from "../pages/edit-suggestion";
+import { FeedbackDetail } from "../pages/feedback-detail";
+import { Suggestions } from "../pages/suggestions";
+import { LoginPage } from "../pages";
 
 const routes = [
   {
@@ -25,6 +27,14 @@ const routes = [
         element: <EditSuggestion />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "*",
+    element: <Error />,
   },
 ];
 

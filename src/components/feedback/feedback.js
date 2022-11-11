@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { LightButton } from "../../../../../components/light-button/light-button";
+import { LightButton } from "..";
 import "./feedback.css";
 
 export const Feedback = ({
@@ -32,7 +32,9 @@ export const Feedback = ({
       <div className="feedback__text">
         <div className="feedback__text__container">
           <h3 className="feedback__text__title">
-            <Link to={`/feedback/${id}`}>{title}</Link>
+            <Link style={{ textDecoration: "none" }} to={`/feedback/${id}`}>
+              {title}
+            </Link>
           </h3>
           <p className="feedback__text__desc">{description}</p>
         </div>

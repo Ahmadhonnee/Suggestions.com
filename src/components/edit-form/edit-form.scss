@@ -48,6 +48,11 @@
 
 .edit-form-btns {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.edit-form-right-btn{
+    display: flex;
     gap: 16px;
-    align-self: flex-end;
+    align-items: center;
 }

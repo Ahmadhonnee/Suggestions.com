@@ -85,3 +85,11 @@
 .darkBtn:hover {
     background: #656EA3;
 }
+
+.dangerBtn {
+    background: #D73737;
+}
+
+.dangerBtn:hover {
+    background: #E98888;
+}

@@ -1,18 +1,18 @@
-import { Button } from "../button/button";
-import { Container } from "../container/container";
-import { DefaultInput } from "../default-input/default-input";
-import { GoBackBar } from "../go-back-bar/go-back-bar";
-import { LigthtText } from "../light-text/light-text";
-import { MediumTitle } from "../medium-title/medium-title";
-import { SectionTitle } from "../section-title/section-title";
+import { Button } from "../button";
+import { Container } from "../container";
+import { DefaultInput } from "../default-input";
+import { GoBackBar } from "../go-back-bar";
+import { LigthtText } from "../light-text";
+import { MediumTitle } from "../medium-title";
+import { SectionTitle } from "../section-title";
 import "./add-form.css";
 
-export const AddForm = () => {
+export const AddForm = ({ addFunc }) => {
   return (
     <Container className={"form-container"}>
       <section className="add-form">
         <GoBackBar goBackTo={"/"} />
-        <form className="add-form-body">
+        <form onSubmit={addFunc} className="add-form-body">
           <SectionTitle className="form-title">
             Create New Feedback
           </SectionTitle>
@@ -43,7 +43,7 @@ export const AddForm = () => {
                   added, etc.
                 </LigthtText>
               </div>
-              <DefaultInput name={"feedback-detail"} height={"95px"} />
+              <DefaultInput name={"feedback_detail"} height={"95px"} />
             </div>
           </div>
           <div className="add-form-btns">

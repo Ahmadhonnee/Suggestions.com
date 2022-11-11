@@ -1,7 +1,11 @@
-import { Button } from "../../../../components/button/button";
+import { useContext } from "react";
+import { LoginAuthContext } from "../../../../App";
+import { Button } from "../../../../components";
 import "./feedbackbar.css";
 
 export const Feedbackbar = () => {
+  const { loginAuth, setLoginAuth } = useContext(LoginAuthContext);
+
   return (
     <nav className="feedbackbar">
       <div className="feedbackbar__suggestions">
@@ -40,7 +44,7 @@ export const Feedbackbar = () => {
         </select> */}
       </div>
       <div className="feedbackbar__right">
-        <Button to={"/add"} className="addFeedbackBtn">
+        <Button to={loginAuth ? "/add" : "/login"} className="addFeedbackBtn">
           + Add Feedback
         </Button>
       </div>

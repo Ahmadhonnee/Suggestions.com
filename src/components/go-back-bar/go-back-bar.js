@@ -1,4 +1,4 @@
-import { Button } from "../button/button";
+import { Button } from "../button";
 import "./go-back-bar.scss";
 
 export const GoBackBar = ({ goBackTo }) => {

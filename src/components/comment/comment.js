@@ -1,7 +1,7 @@
-import { Button } from "../button/button";
-import { LigthtText } from "../light-text/light-text";
-import { MediumTitle } from "../medium-title/medium-title";
-import { Username } from "../username/username";
+import { Button } from "../button";
+import { LigthtText } from "../light-text";
+import { MediumTitle } from "../medium-title";
+import { Username } from "../username";
 import "./comment.css";
 
 export const Comment = ({ className = "", children }) => {

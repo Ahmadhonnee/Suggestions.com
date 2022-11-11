@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import { suggestions } from "../../data/suggestions";
-import { OpenedFeedbackDetail } from "../opened-feedback-detail/opened-feedback-detail";
-import { Comment } from "../comment/comment";
-import { SectionTitle } from "../section-title/section-title";
+import { suggestions } from "../../data";
+import { OpenedFeedbackDetail } from "../opened-feedback-detail";
+import { Comment } from "../comment";
+import { SectionTitle } from "../section-title";
 import "./feedback-comments.css";
-import { Error } from "../error/error";
+import { Error } from "../error";
 
 export const FeedbackComments = () => {
   const { id } = useParams();

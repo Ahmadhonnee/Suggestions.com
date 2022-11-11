@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { suggestions } from "../../data/suggestions";
-import { Button } from "../button/button";
+import { LoginAuthContext } from "../../App";
+import { suggestions } from "../../data";
+import { Button } from "../button";
 import "./feedback-detail-bar.css";
 
 export const FeedbackDetailBar = () => {
   const { id } = useParams();
+  const { loginAuth, setLoginAuth } = useContext(LoginAuthContext);
 
   const handleEditBtnClick = (evt) => {
     const id = +evt.target.dataset.id;
@@ -35,7 +38,7 @@ export const FeedbackDetailBar = () => {
       </Button>
       <Button
         style={{ textDecoration: "none" }}
-        to={"edit"}
+        to={loginAuth ? "edit" : "/login"}
         onClick={handleEditBtnClick}
         dataId={id}
       >

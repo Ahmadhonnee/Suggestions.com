@@ -1,15 +1,17 @@
-import { Feedbackbar } from "../feedbackbar/feedbackbar";
-import { Feedback } from "../feedbacks/feedback/feedback";
-import { suggestions } from "../../../../data/suggestions";
+import { Feedbackbar } from "../feedbackbar";
 import "./article.css";
+import { Feedback } from "../../../../components/feedback";
+import { useContext } from "react";
+import { SuggestionContext } from "../../../../App";
 
-console.log(suggestions);
 export const Article = () => {
+  const { suggestionsList, setSuggestions } = useContext(SuggestionContext);
+
   return (
     <article className="article">
       <Feedbackbar></Feedbackbar>
       <ul className="article__feedbacks">
-        {suggestions?.map(
+        {suggestionsList?.map(
           ({ id, title, description, type, commentsAmount, likes }) => {
             return (
               <li style={{ listStyle: "none" }}>

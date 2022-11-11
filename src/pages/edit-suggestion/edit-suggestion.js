@@ -1,4 +1,4 @@
-import { EditForm } from "../../components/edit-form/edit-form";
+import { EditForm } from "../../components";
 import "./edit-suggestion.scss";
 
 export const EditSuggestion = () => {
