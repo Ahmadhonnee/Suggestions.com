@@ -1,0 +1,14 @@
+.add-comment{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    min-width: fit-content;
+    padding: 34px 24px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    &__submit{
+        display: flex;
+        justify-content: space-between;
+    }
+}

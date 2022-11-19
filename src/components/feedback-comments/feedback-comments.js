@@ -7,21 +7,26 @@ import { VerticalLine } from "../vertical-line";
 import { Error } from "../error";
 import { API_URL } from "../../consts";
 import { useState } from "react";
+import { useEffect } from "react";
 
-export const FeedbackComments = ({ currentFeedback }) => {
+export const FeedbackComments = () => {
   const { id } = useParams();
-  const { suggestionsList, setSuggestions } = useSuggestions();
+  const [currentFeedback, setCurrentFeedback] = useState();
 
-  // fetch(`${API_URL}/${id}`)
-  //   .then((res) => {
-  //     if (res.status === 200) {
-  //       return res.json();
-  //     }
-  //     return Promise.reject(res);
-  //   })
-  //   .then((data) => {
-  //     setCurrentFeedback(data);
-  //   });
+  useEffect(() => {
+    if (!currentFeedback) {
+      fetch(`${API_URL}/${id}`)
+        .then((res) => {
+          if (res.status === 200) {
+            return res.json();
+          }
+          return Promise.reject(res);
+        })
+        .then((data) => {
+          setCurrentFeedback(data);
+        });
+    }
+  }, []);
 
   const commentsAmount = currentFeedback?.comments.length;
 
@@ -40,7 +45,7 @@ export const FeedbackComments = ({ currentFeedback }) => {
             currentFeedback.comments?.map((comment) => {
               return (
                 <>
-                  <Comment comment={comment} />
+                  <Comment comment={comment} key={comment.id} />
                   <VerticalLine />
                 </>
               );

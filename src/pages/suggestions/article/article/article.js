@@ -36,17 +36,24 @@ export const Article = () => {
       <Feedbackbar></Feedbackbar>
       <ul className="article__feedbacks">
         {suggestionsList?.map(
-          ({ id, title, description, type, commentsAmount, likes }) => {
+          ({
+            id,
+            title,
+            description,
+            type,
+            commentsAmount,
+            likes,
+            comments,
+          }) => {
             return (
               <li style={{ listStyle: "none" }} key={id}>
                 <Feedback
-                  key={id}
                   id={id}
                   title={title}
                   description={description}
                   likes={likes}
-                  feedbackAmount={commentsAmount}
                   type={type}
+                  comments={comments}
                 ></Feedback>
               </li>
             );

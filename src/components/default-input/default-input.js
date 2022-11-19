@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import "./default-input.css";
 
 export const DefaultInput = forwardRef(
-  ({ name, text = "", type = "", height = "", putValue }, ref) => {
+  ({ name, text = "", type = "", height = "", putValue, ...props }, ref) => {
     if (text) {
       return (
         <div className="input-parent">
@@ -17,6 +17,7 @@ export const DefaultInput = forwardRef(
             placeholder=" "
             ref={ref}
             required
+            {...props}
           />
           <label className="default-input-label" htmlFor={"def-input-" + name}>
             {text}

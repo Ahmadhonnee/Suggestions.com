@@ -3,6 +3,7 @@ import "../src/components/general/fonts.css";
 import "../src/components/general/general.css";
 import "../src/components/general/normalize.css";
 import { AuthApp } from "./Auth-app";
+import { AddComment, Container } from "./components";
 import { Routes } from "./routes";
 import { UnAuthRoutes } from "./routes/unauth-routes";
 
@@ -16,6 +17,9 @@ function App() {
       {/* {loginAuth ? <AuthApp /> : <UnAuthRoutes />} */}
       <AuthApp />
     </LoginAuthContext.Provider>
+    // <Container>
+    //   <AddComment />
+    // </Container>
   );
 }
 

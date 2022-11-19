@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LightButton } from "..";
+import { Error } from "../error";
 import "./feedback.css";
 
 export const Feedback = ({
-  suggestionComment: {
-    id: commentID,
-    title: commentTitle,
-    description: commentDescription,
-    type: commentType,
-    likes: commentLikes,
-    comments: commentComments,
-  },
+  id: feedbackID,
+  title: feedbackTitle,
+  description: feedbackDescription,
+  likes: feedbackLikes,
+  type: feedbackType,
+  comments: feedbackComments,
 }) => {
-  const [countLikes, setCountLikes] = useState(+commentLikes);
+  const [countLikes, setCountLikes] = useState(+feedbackLikes);
 
   const hendleBtnClick = () => {
     setCountLikes(countLikes + 1);
@@ -36,7 +35,7 @@ export const Feedback = ({
               strokeWidth="2"
             />
           </svg>
-          <span className="feedback__btn__amount">{commentLikes || "."}</span>
+          <span className="feedback__btn__amount">{countLikes}</span>
         </div>
       </LightButton>
       <div className="feedback__text">
@@ -44,14 +43,14 @@ export const Feedback = ({
           <h3 className="feedback__text__title">
             <Link
               style={{ textDecoration: "none" }}
-              to={`/feedback/${commentID}`}
+              to={`/feedback/${feedbackID}`}
             >
-              {commentTitle || "."}
+              {feedbackTitle || "."}
             </Link>
           </h3>
-          <p className="feedback__text__desc">{commentDescription || "."}</p>
+          <p className="feedback__text__desc">{feedbackDescription || "."}</p>
         </div>
-        <LightButton>{commentType || "."}</LightButton>
+        <LightButton>{feedbackType || "."}</LightButton>
       </div>
       <div className="feedback__comments">
         <svg
@@ -66,7 +65,9 @@ export const Feedback = ({
             fill="#CDD2EE"
           />
         </svg>
-        {/* <span className="feedback__comments__amount">{comments.length}</span> */}
+        <span className="feedback__comments__amount">
+          {feedbackComments.length > 0 ? feedbackComments.length : 0}
+        </span>
       </div>
     </div>
   );
