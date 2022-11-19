@@ -41,13 +41,13 @@
     transition: all .2s ease-in;
 }
 
-.default-input:not([value=""])~.default-input-label {
-    /* top: 0;
-    opacity: 1; */
-    background-color: red;
+.default-input:focus~.default-input-label {
+    top: -100%;
+    opacity: 0;
+
 }
 
-.default-input:focus~.default-input-label {
+.default-input:not(:placeholder-shown)~.default-input-label {
     top: -100%;
     opacity: 0;
 

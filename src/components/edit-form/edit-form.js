@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { SuggestionContext } from "../../App";
-import { suggestions } from "../../data";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSuggestions } from "../../hooks";
 import { Button } from "../button";
 import { Container } from "../container";
 import { DefaultInput } from "../default-input";
@@ -11,31 +11,41 @@ import { MediumTitle } from "../medium-title";
 import { SectionTitle } from "../section-title";
 import "./edit-form.scss";
 
-export const EditForm = () => {
+export const EditForm = ({ onSubmit, deleteSuggeston, feedback }) => {
   const { id } = useParams();
+  const titleRef = useRef();
+  const typeRef = useRef();
+  const statusRef = useRef();
+  const descriptionRef = useRef();
+  const navigate = useNavigate();
 
-  const { suggestionsList, setSuggestions } = useContext(SuggestionContext);
+  useEffect(() => {
+    if (feedback) {
+      titleRef.current.value = feedback.title;
+      typeRef.current.value = feedback.type;
+      statusRef.current.value = feedback.status;
+      descriptionRef.current.value = feedback.description;
+    }
+  }, [feedback]);
 
-  const editingObj = suggestionsList.find(
-    (suggestion) => suggestion.id === +id
-  );
-  console.log(editingObj);
+  const hendleFormSubmit = (evt) => {
+    evt.preventDefault();
 
-  const {
-    id: suggestionId,
-    title: suggestionTitle,
-    description: suggestionDescription,
-    type: suggestionType,
-    commentsAmount: suggestionCommentsAmount,
-    likes: suggestionLikes,
-  } = editingObj;
+    onSubmit(evt, id);
+  };
+  const hendleDeleteSuggeston = () => {
+    console.log("delete bosildi");
+    deleteSuggeston();
+    navigate("/");
+  };
+
   return (
     <Container className={"form-container"}>
       <section className="edit-form">
         <GoBackBar goBackTo={`/feedback/${id}`} />
-        <form className="edit-form-body">
+        <form onSubmit={hendleFormSubmit} className="edit-form-body">
           <SectionTitle className="form-title">
-            Editing ‘{suggestionTitle}’
+            Editing ‘{feedback}’
           </SectionTitle>
           <div className="edit-form-details">
             <div className="edit-form-input">
@@ -43,11 +53,7 @@ export const EditForm = () => {
                 <MediumTitle>Feedback Title</MediumTitle>
                 <LigthtText>Add a short, descriptive headline</LigthtText>
               </div>
-              <DefaultInput
-                putValue={suggestionTitle}
-                name={"title"}
-                height={"48px"}
-              />
+              <DefaultInput ref={titleRef} name={"title"} height={"48px"} />
             </div>
           </div>
           <div className="edit-form-details">
@@ -57,8 +63,8 @@ export const EditForm = () => {
                 <LigthtText>Choose a category for your feedback</LigthtText>
               </div>
               <DefaultInput
-                value={suggestionType}
-                name={"feature"}
+                ref={typeRef}
+                name={"type"}
                 text="Feature"
                 height={"48px"}
               />
@@ -70,11 +76,7 @@ export const EditForm = () => {
                 <MediumTitle>Update Status</MediumTitle>
                 <LigthtText>Change feedback state</LigthtText>
               </div>
-              <DefaultInput
-                putValue={suggestionType}
-                name={"status"}
-                height={"48px"}
-              />
+              <DefaultInput ref={statusRef} name={"status"} height={"48px"} />
             </div>
           </div>
           <div className="edit-form-details">
@@ -87,19 +89,29 @@ export const EditForm = () => {
                 </LigthtText>
               </div>
               <DefaultInput
-                name={"feedback-detail"}
+                ref={descriptionRef}
+                name={"description"}
                 height={"95px"}
-                putValue={suggestionDescription}
               />
             </div>
           </div>
           <div className="edit-form-btns">
             <div className="edit-form-left-btn">
-              <Button className="dangerBtn">Delete</Button>
+              <Button
+                className="dangerBtn"
+                type="button"
+                onClick={hendleDeleteSuggeston}
+              >
+                Delete
+              </Button>
             </div>
             <div className="edit-form-right-btn">
-              <Button className="addFeedbackBtn">Add Feedback</Button>
-              <Button className="darkBtn">Cancel</Button>
+              <Button type="submit" className="addFeedbackBtn">
+                Add Feedback
+              </Button>
+              <Button to={`/feedback/${id}`} className="darkBtn">
+                Cancel
+              </Button>
             </div>
           </div>
         </form>

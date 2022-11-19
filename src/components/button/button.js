@@ -6,6 +6,7 @@ export const Button = ({
   to,
   children,
   dataId = "",
+  onClick,
   ...otherProps
 }) => {
   if (to)
@@ -14,6 +15,7 @@ export const Button = ({
         data-id={dataId}
         className={"defaultBtn " + className}
         to={to}
+        onClick={onClick}
         {...otherProps}
       >
         {children}
@@ -23,6 +25,7 @@ export const Button = ({
     <button
       data-id={dataId}
       className={"defaultBtn " + className}
+      onClick={onClick}
       {...otherProps}
     >
       {children}

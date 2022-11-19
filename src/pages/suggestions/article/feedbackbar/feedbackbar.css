@@ -11,31 +11,7 @@
     margin-left: auto;
 }
 
-.feedbackbar__sort {
-    display: flex;
-    align-items: baseline;
-}
 
-.feedbackbar__sort__sortby {
-    font-family: 'Jost';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #F2F4FE;
-}
-
-.feedbackbar__sort__sortby:hover {
-    opacity: 0.75;
-}
-
-.feedbackbar__sort__selected {
-    font-weight: 700;
-}
-
-.feedbackbar__sort__svg {
-    margin-left: 6px;
-}
 
 .feedbackbar__suggestions {
     display: flex;

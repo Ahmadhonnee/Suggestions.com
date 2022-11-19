@@ -1,10 +1,12 @@
 import { useRoutes } from "react-router-dom";
 import { Error } from "../components";
-import { AddSuggestion } from "../pages/add-suggestion";
-import { EditSuggestion } from "../pages/edit-suggestion";
-import { FeedbackDetail } from "../pages/feedback-detail";
-import { Suggestions } from "../pages/suggestions";
-import { LoginPage } from "../pages";
+import {
+  LoginPage,
+  Suggestions,
+  FeedbackDetail,
+  EditSuggestion,
+  AddSuggestion,
+} from "../pages";
 
 const routes = [
   {

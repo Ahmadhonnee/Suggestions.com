@@ -7,7 +7,6 @@ import { FeedbackDetailBar } from "../feedback-detail-bar";
 export const Error = () => {
   return (
     <div className="error">
-      <FeedbackDetailBar />
       <div className="error__img"></div>
       <div className="error__texts">
         <SectionTitle className="error__title">

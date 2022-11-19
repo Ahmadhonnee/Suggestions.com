@@ -1,12 +1,36 @@
 import { Feedbackbar } from "../feedbackbar";
 import "./article.css";
 import { Feedback } from "../../../../components/feedback";
-import { useContext } from "react";
-import { SuggestionContext } from "../../../../App";
+import { useSuggestions } from "../../../../hooks";
+import { API_URL } from "../../../../consts";
+import { useEffect } from "react";
+import { Error } from "../../../../components";
 
 export const Article = () => {
-  const { suggestionsList, setSuggestions } = useContext(SuggestionContext);
+  const { suggestionsList, setSuggestions } = useSuggestions();
 
+  useEffect(() => {
+    if (!suggestionsList) {
+      fetch(API_URL)
+        .then((res) => {
+          if (res.status === 200) {
+            return res.json();
+          }
+          return Promise.reject(res);
+        })
+        .then((data) => {
+          setSuggestions(data);
+          console.log(data);
+        })
+        .catch(() => {
+          console.log("Error");
+        });
+    }
+  }, []);
+
+  if (!suggestionsList) {
+    return <Error />;
+  }
   return (
     <article className="article">
       <Feedbackbar></Feedbackbar>
@@ -14,7 +38,7 @@ export const Article = () => {
         {suggestionsList?.map(
           ({ id, title, description, type, commentsAmount, likes }) => {
             return (
-              <li style={{ listStyle: "none" }}>
+              <li style={{ listStyle: "none" }} key={id}>
                 <Feedback
                   key={id}
                   id={id}

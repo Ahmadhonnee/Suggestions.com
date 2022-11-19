@@ -1,5 +1,9 @@
 import "./light-button.css";
 
-export const LightButton = ({ text }) => {
-  return <span className="lightBtn">{text}</span>;
+export const LightButton = ({ children, onClick }) => {
+  return (
+    <span className="lightBtn" onClick={onClick}>
+      {children}
+    </span>
+  );
 };

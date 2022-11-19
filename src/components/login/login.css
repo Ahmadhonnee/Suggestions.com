@@ -25,7 +25,7 @@
   display: grid;
   place-items: center;
   margin: 0;
-  height: 100vh;
+  height: 90vh;
   padding: var(--space-m);
   font-size: var(--font-size);
   font-family: var(--font-family);
@@ -171,7 +171,7 @@
   transition: transform var(--duration) var(--ease);
 }
 
-input {
+.input {
   flex: 1 1 0;
   width: 100%;
   outline: none;
@@ -182,7 +182,7 @@ input {
   border: 2px solid var(--color-primary);
 }
 
-input:focus {
+.input:focus {
   color: var(--color-primary);
 }
 

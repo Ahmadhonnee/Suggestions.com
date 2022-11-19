@@ -47,8 +47,12 @@ export const AddForm = ({ addFunc }) => {
             </div>
           </div>
           <div className="add-form-btns">
-            <Button className="addFeedbackBtn">Add Feedback</Button>
-            <Button className="darkBtn">Cancel</Button>
+            <Button type="submit" className="addFeedbackBtn">
+              Add Feedback
+            </Button>
+            <Button to={"/"} className="darkBtn">
+              Cancel
+            </Button>
           </div>
         </form>
       </section>

@@ -1,7 +1,7 @@
 import { Container } from "../../components";
 import { FeedbackComments } from "../../components";
 import { FeedbackDetailBar } from "../../components";
-import "./feedback-detail.css";
+import "./feedback-detail-page.css";
 
 export const FeedbackDetail = () => {
   return (

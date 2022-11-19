@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { LoginAuthContext } from "../../../../App";
-import { Button } from "../../../../components";
+import { Button, Select } from "../../../../components";
 import "./feedbackbar.css";
 
 export const Feedbackbar = () => {
@@ -22,29 +22,11 @@ export const Feedbackbar = () => {
           />
         </svg>
         <span className="feedbackbar__suggestions__amount">6 Suggestions</span>
+        <Select />
       </div>
-      <div className="feedbackbar__sort">
-        <span className="feedbackbar__sort__sortby">
-          Sort by :{" "}
-          <span className="feedbackbar__sort__selected">Most Upvotes</span>
-        </span>
-        <svg
-          className="feedbackbar__sort__svg"
-          width="9"
-          height="7"
-          viewBox="0 0 9 7"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M1 6L5 2L9 6" stroke="white" stroke-width="2" />
-        </svg>
-
-        {/* <select>
-          <option></option>
-        </select> */}
-      </div>
+      <div className="feedbackbar__sort">{/* here */}</div>
       <div className="feedbackbar__right">
-        <Button to={loginAuth ? "/add" : "/login"} className="addFeedbackBtn">
+        <Button to={"/add"} className="addFeedbackBtn">
           + Add Feedback
         </Button>
       </div>

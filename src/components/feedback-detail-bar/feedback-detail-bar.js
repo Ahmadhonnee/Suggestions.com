@@ -9,15 +9,6 @@ export const FeedbackDetailBar = () => {
   const { id } = useParams();
   const { loginAuth, setLoginAuth } = useContext(LoginAuthContext);
 
-  const handleEditBtnClick = (evt) => {
-    const id = +evt.target.dataset.id;
-
-    const suggestionObj = suggestions.find(
-      (suggestion) => suggestion.id === id
-    );
-    const { title, description, type } = suggestionObj;
-  };
-
   return (
     <div className="feedback-detail-bar">
       <Button className="goback-btn" to={"/"}>
@@ -31,15 +22,15 @@ export const FeedbackDetailBar = () => {
           <path
             d="M6.33398 9L2.33398 5L6.33398 1"
             stroke="#4661E6"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </svg>
         Go Back
       </Button>
       <Button
         style={{ textDecoration: "none" }}
-        to={loginAuth ? "edit" : "/login"}
-        onClick={handleEditBtnClick}
+        // to={loginAuth ? "edit" : "/login"}
+        to={"edit"}
         dataId={id}
       >
         Edit Feedback

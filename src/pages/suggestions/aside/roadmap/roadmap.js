@@ -12,11 +12,10 @@ export const Roadmap = () => {
         </a>
       </div>
       <div className="roadmap__statistics">
-        {roadmap.map(({ name, amount, color }) => {
+        {roadmap.map(({ id, name, amount, color }) => {
           const currentColor = colors.color || color;
-          console.log(currentColor);
           return (
-            <div className="roadmap__statistics__row">
+            <div className="roadmap__statistics__row" key={id}>
               <div className="roadmap__statistics__group">
                 <span
                   className="roadmap__statistics__circle"

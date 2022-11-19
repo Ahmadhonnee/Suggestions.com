@@ -4,7 +4,7 @@ import { MediumTitle } from "../medium-title";
 import { Username } from "../username";
 import "./comment.css";
 
-export const Comment = ({ className = "", children }) => {
+export const Comment = ({ className = "", comment: { id, title } }) => {
   return (
     <div className="comment">
       <div className={"comment__img " + className}></div>
@@ -14,15 +14,9 @@ export const Comment = ({ className = "", children }) => {
             <MediumTitle>Elijah Moss</MediumTitle>
             <Username text={"@hexagon.bestagon"} />
           </div>
-          <Button className="goback-btn reply-btn">Reply</Button>
+          <LigthtText>{title}</LigthtText>
         </div>
-        <LigthtText>
-          Also, please allow styles to be applied based on system preferences. I
-          would love to be able to browse Frontend Mentor in the evening after
-          my device’s dark mode turns on without the bright background it
-          currently has.
-        </LigthtText>
-        {children}
+        <Button className="goback-btn reply-btn">Reply</Button>
       </div>
     </div>
   );

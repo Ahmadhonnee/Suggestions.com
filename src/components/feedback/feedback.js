@@ -1,44 +1,57 @@
-import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { LightButton } from "..";
 import "./feedback.css";
 
 export const Feedback = ({
-  id,
-  title,
-  description,
-  commentAmount,
-  feedbackAmount,
-  likes,
-  type,
+  suggestionComment: {
+    id: commentID,
+    title: commentTitle,
+    description: commentDescription,
+    type: commentType,
+    likes: commentLikes,
+    comments: commentComments,
+  },
 }) => {
+  const [countLikes, setCountLikes] = useState(+commentLikes);
+
+  const hendleBtnClick = () => {
+    setCountLikes(countLikes + 1);
+  };
+
   return (
     <div className="feedback">
-      <div className="feedback__btn">
-        <svg
-          width="11"
-          height="7"
-          viewBox="0 0 11 7"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1.33447 6L5.33447 2L9.33447 6"
-            stroke="#4661E6"
-            stroke-width="2"
-          />
-        </svg>
-        <span className="feedback__btn__amount">{likes}</span>
-      </div>
+      <LightButton onClick={hendleBtnClick}>
+        <div className="feedback__btn">
+          <svg
+            width="11"
+            height="7"
+            viewBox="0 0 11 7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.33447 6L5.33447 2L9.33447 6"
+              stroke="#4661E6"
+              strokeWidth="2"
+            />
+          </svg>
+          <span className="feedback__btn__amount">{commentLikes || "."}</span>
+        </div>
+      </LightButton>
       <div className="feedback__text">
         <div className="feedback__text__container">
           <h3 className="feedback__text__title">
-            <Link style={{ textDecoration: "none" }} to={`/feedback/${id}`}>
-              {title}
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/feedback/${commentID}`}
+            >
+              {commentTitle || "."}
             </Link>
           </h3>
-          <p className="feedback__text__desc">{description}</p>
+          <p className="feedback__text__desc">{commentDescription || "."}</p>
         </div>
-        <LightButton text={type}></LightButton>
+        <LightButton>{commentType || "."}</LightButton>
       </div>
       <div className="feedback__comments">
         <svg
@@ -53,7 +66,7 @@ export const Feedback = ({
             fill="#CDD2EE"
           />
         </svg>
-        <span className="feedback__comments__amount">{feedbackAmount}</span>
+        {/* <span className="feedback__comments__amount">{comments.length}</span> */}
       </div>
     </div>
   );

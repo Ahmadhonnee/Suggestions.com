@@ -15,7 +15,7 @@ export const GoBackBar = ({ goBackTo }) => {
           <path
             d="M6.33398 9L2.33398 5L6.33398 1"
             stroke="#4661E6"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </svg>
         Go Back

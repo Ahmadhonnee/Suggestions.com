@@ -1,0 +1,90 @@
+.select {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+}
+
+.select__sortby {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #F2F4FE;
+}
+
+.select__sortby:hover {
+    opacity: 0.75;
+}
+.select:hover >.select__box{
+    visibility: visible;
+    opacity: 1;
+}
+
+.select:hover >.select__svg{
+    transform: rotate(-180deg);
+}
+.select__selected {
+    font-weight: 700;
+}
+
+.select__svg {
+    margin-left: 6px;
+    transition: all .2s cubic-bezier(0.77, 0, 0.175, 1);
+    transition-duration: .5s;
+}
+
+.select__box{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+    border-radius: 10px;
+    width: 255px;
+    opacity: 0;
+    transition: all .2s ease-in;
+    transition-delay: .3s;
+    overflow: hidden;
+    visibility: hidden;    
+    user-select: none;
+}
+.select__box__item{
+    position: relative;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #647196;
+    border-bottom: 2px solid rgba(58,67,116, .15);
+    padding: 12px 24px;
+    cursor: pointer;
+}
+.select__box__item::after{
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    top: 0;
+    margin: auto 0;
+    content: "";
+    width: 12px;
+    height: 8.5px;
+    background: url(../../assets/img/checked.png) no-repeat;
+    background-position: center center;
+    background-size: contain;
+    opacity: 0;
+}
+.select__box__item:hover{
+    background-color: #6471963e;
+    &::after{
+        opacity: 1;
+    }
+}
+
+.select__box__item:last-child{
+    border: none;
+}
+.select__box__items{
+    list-style: none;
+}
