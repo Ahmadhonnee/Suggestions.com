@@ -7,6 +7,7 @@ export const Button = ({
   children,
   dataId = "",
   onClick,
+  loading,
   ...otherProps
 }) => {
   if (to)
@@ -16,6 +17,7 @@ export const Button = ({
         className={"defaultBtn " + className}
         to={to}
         onClick={onClick}
+        disabled={loading}
         {...otherProps}
       >
         {children}
@@ -26,6 +28,7 @@ export const Button = ({
       data-id={dataId}
       className={"defaultBtn " + className}
       onClick={onClick}
+      disabled={loading}
       {...otherProps}
     >
       {children}

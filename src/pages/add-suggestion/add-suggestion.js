@@ -1,14 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { AddForm } from "../../components";
 import { API_URL } from "../../consts";
 import { useSuggestions } from "../../hooks";
+import { suggestionsActions } from "../../store/suggestions/suggestions.slice";
 import "./add-suggestion.css";
 
 export const AddSuggestion = () => {
-  const nagigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
+  const dispatch = useDispatch();
 
-  const { suggestionsList, setSuggestions } = useSuggestions();
+  // const { suggestionsList, setSuggestions } = useSuggestions();
+  const { suggestionsList } = useSelector((state) => state.suggestions);
 
   const hendleBtnAdd = (evt) => {
     evt.preventDefault();
@@ -39,9 +43,11 @@ export const AddSuggestion = () => {
       })
       .then((data) => {
         if (suggestionsList) {
-          setSuggestions([newFeedback, ...suggestionsList]);
+          dispatch(
+            suggestionsActions.setSuggestions([newFeedback, ...suggestionsList])
+          );
         }
-        nagigate("/");
+        navigate("/");
       });
   };
 

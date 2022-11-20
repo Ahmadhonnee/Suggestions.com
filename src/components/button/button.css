@@ -21,6 +21,10 @@
     background: #7C91F9;
 }
 
+.defaultBtn:disabled {
+    opacity: 0.7;
+}
+
 .addFeedbackBtn {
 
     background: #AD1FEA;

@@ -5,10 +5,14 @@ import { useSuggestions } from "../../../../hooks";
 import { API_URL } from "../../../../consts";
 import { useEffect } from "react";
 import { Error } from "../../../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { suggestionsActions } from "../../../../store/suggestions/suggestions.slice";
 
 export const Article = () => {
-  const { suggestionsList, setSuggestions } = useSuggestions();
+  // const { suggestionsList, setSuggestions } = useSuggestions();
+  const dispatch = useDispatch();
 
+  const { suggestionsList } = useSelector((state) => state.suggestions);
   useEffect(() => {
     if (!suggestionsList) {
       fetch(API_URL)
@@ -19,14 +23,13 @@ export const Article = () => {
           return Promise.reject(res);
         })
         .then((data) => {
-          setSuggestions(data);
-          console.log(data);
+          dispatch(suggestionsActions.setSuggestions(data));
         })
         .catch(() => {
           console.log("Error");
         });
     }
-  }, []);
+  }, [suggestionsList]);
 
   if (!suggestionsList) {
     return <Error />;
@@ -35,30 +38,13 @@ export const Article = () => {
     <article className="article">
       <Feedbackbar></Feedbackbar>
       <ul className="article__feedbacks">
-        {suggestionsList?.map(
-          ({
-            id,
-            title,
-            description,
-            type,
-            commentsAmount,
-            likes,
-            comments,
-          }) => {
-            return (
-              <li style={{ listStyle: "none" }} key={id}>
-                <Feedback
-                  id={id}
-                  title={title}
-                  description={description}
-                  likes={likes}
-                  type={type}
-                  comments={comments}
-                ></Feedback>
-              </li>
-            );
-          }
-        )}
+        {suggestionsList?.map((feedback) => {
+          return (
+            <li style={{ listStyle: "none" }} key={feedback.id}>
+              <Feedback feedback={feedback}></Feedback>
+            </li>
+          );
+        })}
       </ul>
     </article>
   );

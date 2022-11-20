@@ -3,3 +3,9 @@
     border-radius: 10px;
     padding: 24px 34px;
 }
+
+.feedback-comments-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

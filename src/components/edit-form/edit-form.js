@@ -45,7 +45,7 @@ export const EditForm = ({ onSubmit, deleteSuggeston, feedback }) => {
         <GoBackBar goBackTo={`/feedback/${id}`} />
         <form onSubmit={hendleFormSubmit} className="edit-form-body">
           <SectionTitle className="form-title">
-            Editing ‘{feedback}’
+            Editing ‘{feedback?.title}’
           </SectionTitle>
           <div className="edit-form-details">
             <div className="edit-form-input">

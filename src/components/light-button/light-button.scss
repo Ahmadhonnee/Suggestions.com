@@ -15,8 +15,19 @@
     color: #4661E6;
     background: #F2F4FF;
     cursor: pointer;
-    transition: all .2s ease-in;
+    // transition: all .2s ease-in;
     user-select: none;
+    &.like-btn{
+        color: #3A4374;
+    }
+    &.liked {
+        background: #4661E6 !important;
+        color: #ffffff !important;
+    }
+}
+
+.feedback__btn__svg {
+    stroke: #ffffff !important
 }
 
 .lightBtn:hover {

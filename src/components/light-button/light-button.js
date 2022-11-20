@@ -1,8 +1,19 @@
-import "./light-button.css";
+import "./light-button.scss";
 
-export const LightButton = ({ children, onClick }) => {
+export const LightButton = ({
+  children,
+  onClick,
+  className,
+  loading,
+  ...props
+}) => {
   return (
-    <span className="lightBtn" onClick={onClick}>
+    <span
+      className={className ? "lightBtn" + " " + className : "lightBtn"}
+      onClick={onClick}
+      disabled={loading}
+      {...props}
+    >
       {children}
     </span>
   );

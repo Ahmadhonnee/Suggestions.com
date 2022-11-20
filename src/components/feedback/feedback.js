@@ -1,28 +1,85 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LightButton } from "..";
-import { Error } from "../error";
-import "./feedback.css";
+import { API_URL } from "../../consts";
+import { suggestionsActions } from "../../store/suggestions/suggestions.slice";
+import "./feedback.scss";
 
-export const Feedback = ({
-  id: feedbackID,
-  title: feedbackTitle,
-  description: feedbackDescription,
-  likes: feedbackLikes,
-  type: feedbackType,
-  comments: feedbackComments,
-}) => {
-  const [countLikes, setCountLikes] = useState(+feedbackLikes);
+export const Feedback = ({ feedback }) => {
+  const dispatch = useDispatch();
+  const { suggestionsList } = useSelector((state) => state.suggestions);
+  const [isLikeBtnClicked, setLikeBtnCkick] = useState(null);
+  const [isLikeClicking, setLikeClicking] = useState(false);
 
-  const hendleBtnClick = () => {
-    setCountLikes(countLikes + 1);
+  if (!feedback) {
+    return null;
+  }
+  const {
+    id: feedbackID,
+    title: feedbackTitle,
+    description: feedbackDescription,
+    likes: feedbackLikes,
+    isLiked: feedbackIsLiked,
+    type: feedbackType,
+    comments: feedbackComments,
+  } = feedback;
+  setLikeBtnCkick(feedbackIsLiked);
+
+  const hendleBtnClick = (evt) => {
+    setLikeBtnCkick(!isLikeBtnClicked);
+
+    const likedFeedback = feedback;
+    likedFeedback.isLiked = isLikeBtnClicked;
+
+    const id = evt.target.parentElement.dataset.id;
+    setLikeClicking(true);
+    fetch(API_URL + "/" + id, {
+      method: "PUT",
+      body: JSON.stringify(likedFeedback),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        return Promise.reject(res);
+      })
+      .then((data) => {
+        if (suggestionsList) {
+          const likedSuggestionIndex = suggestionsList?.findIndex(
+            (suggestion) => suggestion.id === +id
+          );
+          dispatch(
+            suggestionsActions.setSuggestions([
+              ...suggestionsList.slice(0, likedSuggestionIndex),
+              likedFeedback,
+              ...suggestionsList.slice(likedSuggestionIndex + 1),
+            ])
+          );
+        }
+      })
+      .catch(() => {
+        console.log("Error on clicking Like");
+      })
+      .finally(() => {
+        setLikeClicking(false);
+      });
   };
 
   return (
-    <div className="feedback">
-      <LightButton onClick={hendleBtnClick}>
+    <div className="feedback" data-id={feedbackID}>
+      <LightButton
+        className={isLikeBtnClicked ? "like-btn liked" : "like-btn"}
+        onClick={(evt) => hendleBtnClick(evt)}
+        loading={isLikeClicking}
+      >
         <div className="feedback__btn">
           <svg
+            className={
+              isLikeBtnClicked
+                ? "feedback__btn__svg liked"
+                : "feedback__btn__svg"
+            }
             width="11"
             height="7"
             viewBox="0 0 11 7"
@@ -35,7 +92,7 @@ export const Feedback = ({
               strokeWidth="2"
             />
           </svg>
-          <span className="feedback__btn__amount">{countLikes}</span>
+          <span className={"feedback__btn__amount"}>{feedbackLikes || 0}</span>
         </div>
       </LightButton>
       <div className="feedback__text">
@@ -45,12 +102,12 @@ export const Feedback = ({
               style={{ textDecoration: "none" }}
               to={`/feedback/${feedbackID}`}
             >
-              {feedbackTitle || "."}
+              {feedbackTitle || ";("}
             </Link>
           </h3>
-          <p className="feedback__text__desc">{feedbackDescription || "."}</p>
+          <p className="feedback__text__desc">{feedbackDescription || ";("}</p>
         </div>
-        <LightButton>{feedbackType || "."}</LightButton>
+        <LightButton>{feedbackType || ";("}</LightButton>
       </div>
       <div className="feedback__comments">
         <svg
@@ -66,7 +123,7 @@ export const Feedback = ({
           />
         </svg>
         <span className="feedback__comments__amount">
-          {feedbackComments.length > 0 ? feedbackComments.length : 0}
+          {feedbackComments?.length > 0 ? feedbackComments?.length : 0}
         </span>
       </div>
     </div>
