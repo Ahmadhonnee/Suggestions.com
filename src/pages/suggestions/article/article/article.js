@@ -1,15 +1,13 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Error } from "../../../../components";
+import { Feedback } from "../../../../components/feedback";
+import { API_URL } from "../../../../consts";
+import { suggestionsActions } from "../../../../store/suggestions/suggestions.slice";
 import { Feedbackbar } from "../feedbackbar";
 import "./article.css";
-import { Feedback } from "../../../../components/feedback";
-import { useSuggestions } from "../../../../hooks";
-import { API_URL } from "../../../../consts";
-import { useEffect } from "react";
-import { Error } from "../../../../components";
-import { useDispatch, useSelector } from "react-redux";
-import { suggestionsActions } from "../../../../store/suggestions/suggestions.slice";
 
 export const Article = () => {
-  // const { suggestionsList, setSuggestions } = useSuggestions();
   const dispatch = useDispatch();
 
   const { suggestionsList } = useSelector((state) => state.suggestions);
@@ -29,7 +27,7 @@ export const Article = () => {
           console.log("Error");
         });
     }
-  }, [suggestionsList]);
+  }, []);
 
   if (!suggestionsList) {
     return <Error />;

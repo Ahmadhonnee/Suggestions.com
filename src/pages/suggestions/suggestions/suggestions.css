@@ -2,7 +2,36 @@
     display: grid;
     grid-template-columns: 2fr 7fr;
     gap: 30px;
-    margin: 60px;
+    margin-top: 60px;
     background-color: inherit;
     width: 100%;
+}
+
+@media only screen and (max-width:1024px) {
+    .suggestions {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+    }
+
+    .aside {
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-between;
+    }
+
+    .filterbar {
+        width: 223px;
+        height: 178px;
+    }
+
+    .mentor {
+        width: 223px;
+        height: 178px;
+    }
+
+    .roadmap {
+        width: 223px;
+        height: 178px;
+    }
+
 }

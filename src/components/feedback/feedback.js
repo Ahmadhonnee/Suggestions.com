@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -24,19 +25,27 @@ export const Feedback = ({ feedback }) => {
     type: feedbackType,
     comments: feedbackComments,
   } = feedback;
-  setLikeBtnCkick(feedbackIsLiked);
 
   const hendleBtnClick = (evt) => {
+    setLikeBtnCkick(feedbackIsLiked);
     setLikeBtnCkick(!isLikeBtnClicked);
 
-    const likedFeedback = feedback;
-    likedFeedback.isLiked = isLikeBtnClicked;
+    const likedFeedback = {
+      ...feedback,
+      isLiked: !feedback.isLiked,
+      likes: feedback.likes + 1,
+    };
 
     const id = evt.target.parentElement.dataset.id;
+    console.log(id);
+    console.log(likedFeedback);
     setLikeClicking(true);
     fetch(API_URL + "/" + id, {
       method: "PUT",
       body: JSON.stringify(likedFeedback),
+      headers: {
+        "content-type": "application/json",
+      },
     })
       .then((res) => {
         if (res.status === 200) {
@@ -69,14 +78,14 @@ export const Feedback = ({ feedback }) => {
   return (
     <div className="feedback" data-id={feedbackID}>
       <LightButton
-        className={isLikeBtnClicked ? "like-btn liked" : "like-btn"}
+        className={feedbackIsLiked ? "like-btn liked" : "like-btn"}
         onClick={(evt) => hendleBtnClick(evt)}
         loading={isLikeClicking}
       >
         <div className="feedback__btn">
           <svg
             className={
-              isLikeBtnClicked
+              feedbackIsLiked
                 ? "feedback__btn__svg liked"
                 : "feedback__btn__svg"
             }

@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { API_URL } from "../../consts";
 import { selectOptions } from "../../data";
+import { suggestionsActions } from "../../store/suggestions/suggestions.slice";
 import "./select.scss";
 
 export const Select = () => {
-  const [selected, setSelected] = useState({ id: 1, sortBy: "Most Upvotes" });
+  const dispatch = useDispatch();
+  const [selected, setSelected] = useState({
+    id: 1,
+    title: "Most Upvotes",
+    sortBy: "likes",
+  });
 
   const handleSelectClick = (evt) => {
     const target = evt.target;
-    console.log(target);
     if (target.matches(".select__box__item")) {
       const selectID = target.dataset.id;
       const selectedObj = selectOptions.find(
@@ -16,11 +23,33 @@ export const Select = () => {
       setSelected(selectedObj);
     }
   };
+  useEffect(() => {
+    const splittedValue = selected.sortBy.split(" ");
+    fetch(
+      `${API_URL}?${new URLSearchParams({
+        _sort: splittedValue[0],
+        _order: splittedValue[1],
+      })}`
+    )
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        return Promise.reject();
+      })
+      .then((data) => {
+        dispatch(suggestionsActions.setSuggestions(data));
+      })
+      .catch(() => {
+        console.log("Error in Soritng!!!");
+      })
+      .finally(() => {});
+  }, [selected]);
 
   return (
     <div className="select">
       <span className="select__sortby">
-        Sort by : <span className="select__selected">{selected.sortBy}</span>
+        Sort by : <span className="select__selected">{selected.title}</span>
       </span>
       <svg
         className="select__svg"
@@ -40,7 +69,7 @@ export const Select = () => {
               data-id={option.id}
               key={option.id}
             >
-              {option.sortBy}
+              {option.title}
             </li>
           ))}
         </ul>

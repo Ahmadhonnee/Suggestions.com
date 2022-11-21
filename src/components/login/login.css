@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
 :root {
-  --space-root: 1rem;
+  --space-root: 16px;
   --space-xs: calc(var(--space-root) / 2);
   --space-s: calc(var(--space-root) / 1.5);
   --space-m: var(--space-root);
@@ -85,7 +85,7 @@
 .form:hover,
 .form:focus-within {
   transform: scale(1.0001);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 3rem rgba(0, 0, 0, 0.1);
 }
 
 .form:hover:before,

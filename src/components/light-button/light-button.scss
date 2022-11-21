@@ -23,6 +23,13 @@
     &.liked {
         background: #4661E6 !important;
         color: #ffffff !important;
+        &:disabled{
+            background-color: red !important
+        }
+    }
+    
+    &:disabled{
+        background-color: red !important
     }
 }
 
@@ -39,3 +46,11 @@
     background: #4661E6;
     color: #ffffff;
 } */
+
+.filterbar__filterby.clicked{
+    background: #4661E6;
+    color: #FFFFFF;
+    &:disabled{
+        opacity: 0.5;
+    }
+}

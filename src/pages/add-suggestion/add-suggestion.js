@@ -25,6 +25,7 @@ export const AddSuggestion = () => {
       status: "planned",
       isLiked: false,
       likes: 0,
+      commentsAmount: 0,
       comments: [],
     };
 
